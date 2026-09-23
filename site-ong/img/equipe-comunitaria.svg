@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" role="img" aria-label="Ilustração de equipe de voluntários em frente a casas de uma comunidade">
+  <rect width="900" height="480" fill="#f0fdf4"/>
+  <circle cx="750" cy="90" r="46" fill="#fde68a"/>
+
+  <!-- casas ao fundo -->
+  <g fill="#bbf7d0">
+    <rect x="70" y="230" width="150" height="140"/>
+    <rect x="250" y="200" width="180" height="170"/>
+    <rect x="460" y="245" width="140" height="125"/>
+    <rect x="630" y="215" width="170" height="155"/>
+  </g>
+  <g fill="#86efac">
+    <polygon points="70,230 145,178 220,230"/>
+    <polygon points="250,200 340,142 430,200"/>
+    <polygon points="460,245 530,198 600,245"/>
+    <polygon points="630,215 715,160 800,215"/>
+  </g>
+  <g fill="#f0fdf4">
+    <rect x="120" y="270" width="46" height="46"/>
+    <rect x="315" y="240" width="52" height="52"/>
+    <rect x="505" y="285" width="44" height="44"/>
+    <rect x="690" y="255" width="50" height="50"/>
+  </g>
+
+  <!-- chão -->
+  <rect x="0" y="370" width="900" height="110" fill="#16a34a"/>
+
+  <!-- voluntários -->
+  <g>
+    <circle cx="250" cy="300" r="32" fill="#14532d"/>
+    <path d="M198 400 a52 58 0 0 1 104 0 Z" fill="#14532d"/>
+  </g>
+  <g>
+    <circle cx="360" cy="285" r="36" fill="#166534"/>
+    <path d="M302 400 a58 66 0 0 1 116 0 Z" fill="#166534"/>
+  </g>
+  <g>
+    <circle cx="475" cy="298" r="33" fill="#15803d"/>
+    <path d="M422 400 a53 60 0 0 1 106 0 Z" fill="#15803d"/>
+  </g>
+  <g>
+    <circle cx="585" cy="290" r="35" fill="#14532d"/>
+    <path d="M529 400 a56 63 0 0 1 112 0 Z" fill="#14532d"/>
+  </g>
+
+  <!-- mudas -->
+  <g stroke="#dcfce7" stroke-width="6" stroke-linecap="round" fill="none">
+    <path d="M120 450 V415"/><path d="M120 425 q-22 -12 -30 -30"/><path d="M120 432 q22 -12 30 -30"/>
+    <path d="M790 450 V415"/><path d="M790 425 q-22 -12 -30 -30"/><path d="M790 432 q22 -12 30 -30"/>
+  </g>
+</svg>

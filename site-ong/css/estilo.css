@@ -1,0 +1,531 @@
+/* =========================================================================
+   Instituto Semear - Folha de estilos
+   Autor: Luis Fellipe Vasconcelos Magalhaes da Silva
+   Organização: variáveis, base, layout, componentes, formulário, rodapé.
+   ========================================================================= */
+
+/* ---------- 1. Variáveis ---------- */
+:root {
+  --verde-escuro: #14532d;
+  --verde: #166534;
+  --verde-claro: #dcfce7;
+  --areia: #faf8f3;
+  --texto: #1f2937;
+  --texto-suave: #4b5563;
+  --borda: #d8dbd6;
+  --branco: #ffffff;
+  --erro: #b91c1c;
+  --sucesso: #15803d;
+  --raio: 8px;
+  --sombra: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --largura: 1080px;
+}
+
+/* ---------- 2. Base ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--texto);
+  background-color: var(--branco);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.25;
+  color: var(--verde-escuro);
+  margin: 0 0 0.6em;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.65rem; margin-top: 0; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.05rem; color: var(--texto); }
+h5 { font-size: 0.95rem; color: var(--texto-suave); text-transform: uppercase; letter-spacing: 0.04em; }
+
+p { margin: 0 0 1rem; }
+
+a {
+  color: var(--verde);
+  text-decoration: underline;
+}
+
+a:hover,
+a:focus {
+  color: var(--verde-escuro);
+}
+
+:focus-visible {
+  outline: 3px solid var(--verde);
+  outline-offset: 2px;
+}
+
+img { max-width: 100%; height: auto; }
+
+/* Link de salto para o conteúdo (acessibilidade por teclado) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--verde-escuro);
+  color: var(--branco);
+  padding: 0.75rem 1.25rem;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------- 3. Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--largura);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.container--estreito { max-width: 760px; }
+
+.secao { padding: 3rem 0; }
+.secao--alt { background-color: var(--areia); }
+.secao--destaque { background-color: var(--verde-escuro); color: var(--branco); }
+.secao--destaque h2 { color: var(--branco); }
+
+/* ---------- 4. Cabeçalho e navegação ---------- */
+.cabecalho {
+  background-color: var(--branco);
+  border-bottom: 1px solid var(--borda);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.cabecalho__interno {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.marca {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--verde-escuro);
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.marca__logo { width: 34px; height: 34px; }
+
+.menu__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu__lista a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--texto);
+  padding-bottom: 2px;
+}
+
+.menu__lista a:hover,
+.menu__lista a[aria-current="page"] {
+  color: var(--verde);
+  border-bottom: 2px solid var(--verde);
+}
+
+.menu__destaque {
+  background-color: var(--verde);
+  color: var(--branco) !important;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--raio);
+}
+
+.menu__destaque:hover,
+.menu__destaque[aria-current="page"] {
+  background-color: var(--verde-escuro);
+  border-bottom: none !important;
+}
+
+/* ---------- 5. Destaque de abertura ---------- */
+.hero {
+  background: linear-gradient(135deg, var(--verde-escuro), var(--verde));
+  color: var(--branco);
+  padding: 4rem 0;
+}
+
+.hero--curto { padding: 2.5rem 0; }
+.hero h1 { color: var(--branco); max-width: 22ch; }
+.hero__texto { max-width: 62ch; font-size: 1.1rem; }
+
+/* ---------- 6. Componentes ---------- */
+.botao {
+  display: inline-block;
+  background-color: var(--verde);
+  color: var(--branco);
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: var(--raio);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.botao:hover { background-color: var(--verde-escuro); color: var(--branco); }
+.botao--claro { background-color: var(--branco); color: var(--verde-escuro); }
+.botao--claro:hover { background-color: var(--verde-claro); color: var(--verde-escuro); }
+.botao--secundario { background-color: transparent; color: var(--verde); border: 2px solid var(--verde); }
+.botao--secundario:hover { background-color: var(--verde-claro); color: var(--verde-escuro); }
+
+.link-forte { font-weight: 600; }
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.cartao {
+  background-color: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.25rem;
+  box-shadow: var(--sombra);
+}
+
+.cartao h3 { margin-top: 0; }
+
+.indicadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.indicador {
+  background-color: var(--branco);
+  border-left: 4px solid var(--verde);
+  border-radius: var(--raio);
+  padding: 1rem 1.15rem;
+  box-shadow: var(--sombra);
+}
+
+.indicador__numero {
+  display: block;
+  font-size: 1.9rem;
+  color: var(--verde-escuro);
+  line-height: 1.1;
+}
+
+.indicador__rotulo { font-size: 0.9rem; color: var(--texto-suave); }
+
+.frente {
+  border-top: 1px solid var(--borda);
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* ---------- 7. Página de projetos ---------- */
+.sumario {
+  background-color: var(--verde-claro);
+  padding: 1rem 0;
+}
+
+.sumario__titulo {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+
+.sumario__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.projeto {
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  margin-bottom: 1.75rem;
+  box-shadow: var(--sombra);
+  scroll-margin-top: 90px;
+}
+
+.projeto__resumo { font-size: 1.05rem; color: var(--texto-suave); }
+
+.projeto__figura { margin: 1.25rem 0; }
+
+.projeto__imagem,
+.projeto__imagem img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  border-radius: var(--raio);
+  background-color: var(--verde-claro);
+}
+
+.figura-institucional { margin: 1.5rem 0; }
+
+.figura-institucional picture,
+.figura-institucional img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  border-radius: var(--raio);
+}
+
+.figura-institucional figcaption {
+  font-size: 0.875rem;
+  color: var(--texto-suave);
+  margin-top: 0.5rem;
+}
+
+.projeto__figura figcaption {
+  font-size: 0.875rem;
+  color: var(--texto-suave);
+  margin-top: 0.5rem;
+}
+
+.lista-resultados { margin: 0 0 1rem 1.15rem; }
+.lista-etapas { margin: 0 0 1rem 1.15rem; }
+
+.contribuicao {
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--verde);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  margin-bottom: 1.75rem;
+  box-shadow: var(--sombra);
+  scroll-margin-top: 90px;
+}
+
+.canais {
+  margin: 0 0 1.25rem;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1.25rem;
+}
+
+.canais dt { font-weight: 700; color: var(--verde-escuro); }
+.canais dd { margin: 0; }
+
+@media (max-width: 540px) {
+  .canais { grid-template-columns: 1fr; gap: 0.15rem; }
+  .canais dd { margin-bottom: 0.6rem; }
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  background-color: var(--branco);
+}
+
+.tabela caption {
+  text-align: left;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  padding-bottom: 0.6rem;
+}
+
+.tabela th,
+.tabela td {
+  border: 1px solid var(--borda);
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+}
+
+.tabela thead th { background-color: var(--verde-escuro); color: var(--branco); }
+.tabela tbody tr:nth-child(even) { background-color: var(--areia); }
+
+/* ---------- 8. Formulário ---------- */
+.formulario { margin-top: 1.5rem; }
+
+.bloco {
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 1.25rem 1.5rem 1.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.bloco > legend {
+  font-weight: 700;
+  color: var(--verde-escuro);
+  padding: 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.subbloco {
+  border: 1px dashed var(--borda);
+  border-radius: var(--raio);
+  padding: 0.9rem 1rem 1rem;
+  margin: 0 0 1.15rem;
+}
+
+.subbloco > legend { font-weight: 600; padding: 0 0.4rem; }
+
+.campo { margin-bottom: 1.15rem; }
+
+.campo label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.campo abbr { color: var(--erro); text-decoration: none; }
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  background-color: var(--branco);
+}
+
+.campo textarea { resize: vertical; }
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus { border-color: var(--verde); }
+
+/* Feedback visual pela validação nativa */
+.campo input:required:invalid:not(:placeholder-shown),
+.campo select:required:invalid:not([value=""]):focus {
+  border-color: var(--erro);
+}
+
+.campo input:required:valid:not(:placeholder-shown) {
+  border-color: var(--sucesso);
+}
+
+.campo-linha {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.campo--largo { flex: 2 1 220px; }
+.campo--estreito { flex: 1 1 110px; }
+
+.ajuda {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  margin-top: 0.3rem;
+}
+
+.ajuda--contador { text-align: right; }
+
+.opcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem 1.5rem;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.opcao--bloco { align-items: flex-start; gap: 0.6rem; }
+.opcao input { width: auto; }
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.retorno {
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--raio);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+.retorno--sucesso { background-color: var(--verde-claro); color: var(--verde-escuro); border-left: 4px solid var(--sucesso); }
+.retorno--erro { background-color: #fee2e2; color: var(--erro); border-left: 4px solid var(--erro); }
+
+/* ---------- 9. Rodapé ---------- */
+.rodape {
+  background-color: var(--verde-escuro);
+  color: var(--verde-claro);
+  padding: 2.5rem 0 1.25rem;
+  margin-top: 2rem;
+}
+
+.rodape__interno {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.75rem;
+}
+
+.rodape__titulo {
+  color: var(--branco);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.rodape__endereco { font-style: normal; line-height: 1.8; }
+.rodape__texto { line-height: 1.8; }
+
+.rodape__lista { list-style: none; margin: 0; padding: 0; line-height: 2; }
+
+.rodape a { color: var(--branco); }
+
+.rodape__copyright {
+  text-align: center;
+  margin: 2rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ---------- 10. Responsividade ---------- */
+@media (max-width: 640px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.4rem; }
+  .hero { padding: 2.5rem 0; }
+  .cabecalho__interno { flex-direction: column; align-items: flex-start; }
+  .campo-linha { flex-direction: column; gap: 0; }
+}

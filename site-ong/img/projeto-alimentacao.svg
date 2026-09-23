@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="800" height="420" role="img" aria-label="Ilustração de horta comunitária com canteiros e hortaliças">
+<rect width="800" height="420" fill="#fefce8"/>
+<circle cx="680" cy="90" r="46" fill="#fde68a"/>
+<rect x="0" y="300" width="800" height="120" fill="#a16207"/>
+<g fill="#854d0e">
+  <rect x="60" y="300" width="200" height="26" rx="6"/>
+  <rect x="300" y="300" width="200" height="26" rx="6"/>
+  <rect x="540" y="300" width="200" height="26" rx="6"/>
+</g>
+<g stroke="#15803d" stroke-width="9" stroke-linecap="round" fill="none">
+  <path d="M110 300 V210"/><path d="M110 240 q-36 -20 -48 -54"/><path d="M110 252 q36 -20 48 -54"/>
+  <path d="M210 300 V225"/><path d="M210 252 q-32 -18 -42 -48"/><path d="M210 262 q32 -18 42 -48"/>
+  <path d="M350 300 V205"/><path d="M350 236 q-36 -20 -48 -54"/><path d="M350 248 q36 -20 48 -54"/>
+  <path d="M450 300 V230"/><path d="M450 256 q-32 -18 -42 -48"/><path d="M450 266 q32 -18 42 -48"/>
+  <path d="M590 300 V215"/><path d="M590 244 q-34 -19 -45 -51"/><path d="M590 255 q34 -19 45 -51"/>
+  <path d="M690 300 V235"/><path d="M690 260 q-30 -17 -40 -45"/><path d="M690 270 q30 -17 40 -45"/>
+</g>
+<g fill="#dc2626">
+  <circle cx="150" cy="268" r="13"/><circle cx="390" cy="262" r="13"/><circle cx="630" cy="272" r="13"/>
+</g>
+</svg>
