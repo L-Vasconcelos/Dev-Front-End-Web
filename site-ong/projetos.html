@@ -21,9 +21,22 @@
       </p>
 
       <nav class="menu" aria-label="Navegação principal">
-        <ul class="menu__lista">
+        <button class="menu__botao" type="button" aria-expanded="false" aria-controls="menu-principal">
+          <span class="menu__icone" aria-hidden="true"></span>
+          Menu
+        </button>
+        <ul class="menu__lista" id="menu-principal">
           <li><a href="index.html">Início</a></li>
-          <li><a href="projetos.html" aria-current="page">Projetos sociais</a></li>
+          <li class="menu__item--sub">
+            <a href="projetos.html" aria-current="page">Projetos sociais</a>
+            <ul class="submenu" aria-label="Seções de Projetos sociais">
+              <li><a href="projetos.html#projeto-semear-saber">Semear Saber</a></li>
+              <li><a href="projetos.html#projeto-mesa-cheia">Mesa Cheia</a></li>
+              <li><a href="projetos.html#projeto-maos-que-criam">Mãos que Criam</a></li>
+              <li><a href="projetos.html#projeto-raiz-cultural">Raiz Cultural</a></li>
+              <li><a href="projetos.html#como-contribuir">Como contribuir</a></li>
+            </ul>
+          </li>
           <li><a href="cadastro.html" class="menu__destaque">Seja voluntário</a></li>
         </ul>
       </nav>
@@ -64,6 +77,10 @@
         <!-- Projeto 1 -->
         <article class="projeto" id="projeto-semear-saber">
           <h3>Semear Saber</h3>
+          <ul class="badges" aria-label="Classificação do projeto">
+            <li class="badge badge--primaria">Educação</li>
+            <li class="badge badge--secundaria">25 vagas para voluntários</li>
+          </ul>
           <p class="projeto__resumo">
             Reforço escolar no contraturno para estudantes do 1º ao 5º ano, com foco em
             alfabetização e raciocínio lógico.
@@ -106,6 +123,10 @@
         <!-- Projeto 2 -->
         <article class="projeto" id="projeto-mesa-cheia">
           <h3>Mesa Cheia</h3>
+          <ul class="badges" aria-label="Classificação do projeto">
+            <li class="badge badge--primaria">Segurança alimentar</li>
+            <li class="badge badge--secundaria">40 vagas para voluntários</li>
+          </ul>
           <p class="projeto__resumo">
             Segurança alimentar por meio de distribuição de cestas, hortas comunitárias e
             oficinas de aproveitamento integral.
@@ -148,6 +169,10 @@
         <!-- Projeto 3 -->
         <article class="projeto" id="projeto-maos-que-criam">
           <h3>Mãos que Criam</h3>
+          <ul class="badges" aria-label="Classificação do projeto">
+            <li class="badge badge--primaria">Geração de renda</li>
+            <li class="badge badge--secundaria">15 vagas para voluntários</li>
+          </ul>
           <p class="projeto__resumo">
             Formação técnica curta e apoio à formalização de pequenos empreendedores do
             território.
@@ -190,6 +215,10 @@
         <!-- Projeto 4 -->
         <article class="projeto" id="projeto-raiz-cultural">
           <h3>Raiz Cultural</h3>
+          <ul class="badges" aria-label="Classificação do projeto">
+            <li class="badge badge--primaria">Cultura</li>
+            <li class="badge badge--secundaria">18 vagas para voluntários</li>
+          </ul>
           <p class="projeto__resumo">
             Oficinas de música, dança e audiovisual como ferramenta de permanência escolar
             e fortalecimento identitário.
@@ -237,8 +266,9 @@
       <div class="container">
         <h2 id="titulo-comparativo">Comparativo dos programas</h2>
 
+        <div class="tabela-rolagem" role="region" aria-labelledby="legenda-comparativo" tabindex="0">
         <table class="tabela">
-          <caption>Projetos ativos, público atendido e necessidade de voluntários em 2026.</caption>
+          <caption id="legenda-comparativo">Projetos ativos, público atendido e necessidade de voluntários em 2026.</caption>
           <thead>
             <tr>
               <th scope="col">Projeto</th>
@@ -274,6 +304,7 @@
             </tr>
           </tbody>
         </table>
+        </div>
 
         <p><a class="botao" href="cadastro.html">Escolher um projeto e se cadastrar</a></p>
       </div>
@@ -382,6 +413,7 @@
             <li><a href="index.html">Início</a></li>
             <li><a href="projetos.html">Projetos sociais</a></li>
             <li><a href="cadastro.html">Cadastro de voluntários</a></li>
+            <li><a href="componentes.html">Guia de componentes</a></li>
           </ul>
         </nav>
       </section>
@@ -401,5 +433,6 @@
     </p>
   </footer>
 
+  <script src="js/menu.js"></script>
 </body>
 </html>
