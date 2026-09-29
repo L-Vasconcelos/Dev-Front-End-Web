@@ -7,7 +7,8 @@ evoluído ao longo das Experiências Práticas.
 | Etapa | Foco | Versão |
 |---|---|---|
 | Experiência Prática 1 | HTML5 semântico, formulários, acessibilidade, validação W3C | tag `ep1-entregue` |
-| Experiência Prática 2 | CSS3: design system, Grid, Flexbox, responsividade, componentes | em andamento |
+| Experiência Prática 2 | CSS3: design system, Grid, Flexbox, responsividade, componentes | concluída |
+| Experiência Prática 4 | Git/GitFlow, acessibilidade WCAG 2.1, build e deploy | em andamento |
 
 ## Estrutura
 
