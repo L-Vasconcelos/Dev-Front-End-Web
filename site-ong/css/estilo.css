@@ -1159,3 +1159,74 @@ img { max-width: 100%; height: auto; }
   :root { --largura: 1280px; }
   .hero__texto { max-width: 70ch; }
 }
+
+/* ---------- 11. Modos de alto contraste ----------
+   Duas camadas, ambas ativadas pelo sistema operacional, sem JavaScript:
+   (a) prefers-contrast: more  - o usuário pediu mais contraste (Windows, macOS, iOS, Android).
+       Os tokens do design system são redefinidos para tons mais escuros, então todo o site
+       herda o ajuste sem reescrever componentes.
+   (b) forced-colors: active   - Alto Contraste do Windows. O navegador impõe a paleta do
+       sistema; aqui só garantimos que bordas, marcadores e foco continuem visíveis. */
+
+@media (prefers-contrast: more) {
+  :root {
+    --cor-neutra-900: #000000;     /* texto principal: 21:1 com branco */
+    --cor-neutra-600: #1f2937;     /* texto de apoio: 14.7:1 */
+    --cor-neutra-500: #1f2937;     /* borda de campos: 14.7:1 */
+    --cor-neutra-300: #4b5563;     /* divisórias e bordas de cartões: 7.6:1 (antes 1.4:1) */
+    --cor-neutra-50:  #ffffff;     /* fundo areia vira branco puro */
+    --cor-primaria-700: #14532d;   /* links e botões: 9.1:1 */
+    --cor-secundaria-700: #92400e; /* âmbar de foco e destaques: 7.1:1 */
+    --sombra: none;
+    --sombra-elevada: 0 0 0 2px #000000;
+  }
+
+  a { text-decoration-thickness: 2px; text-underline-offset: 3px; }
+
+  :focus-visible,
+  input[type="date"]:focus-within { outline-width: 4px; }
+
+  /* Botão desativado: mantém o cinza claro original para o texto seguir legível */
+  .botao:disabled,
+  .botao[aria-disabled="true"] {
+    background-color: #d8dbd6;
+    color: #1f2937;
+    border-color: #1f2937;
+  }
+
+  .badge--primaria,
+  .badge--secundaria { border-color: currentColor; }
+}
+
+@media (forced-colors: active) {
+  :focus-visible,
+  input[type="date"]:focus-within { outline-color: Highlight; }
+
+  /* Bordas explícitas onde o componente dependia só da cor de fundo */
+  .botao,
+  .badge,
+  .toast,
+  .skip-link,
+  .menu__destaque { border: 2px solid ButtonText; }
+
+  /* Ícone hambúrguer e seta do dropdown são desenhados com fundo e bordas:
+     usam a cor do texto do sistema para não sumirem nem virarem retângulos */
+  .menu__icone,
+  .menu__icone::before,
+  .menu__icone::after { forced-color-adjust: none; background-color: ButtonText; }
+  .menu__item--sub > a::after {
+    forced-color-adjust: none;
+    border-color: transparent;
+    border-top-color: LinkText;
+  }
+  .menu__botao[aria-expanded="true"] .menu__icone { background-color: transparent; }
+
+  .botao:disabled,
+  .botao[aria-disabled="true"] { color: GrayText; border-color: GrayText; }
+
+  /* Marcador de status dos badges é desenhado com background: preserva a cor do texto */
+  .badge--sucesso::before,
+  .badge--erro::before { forced-color-adjust: none; background-color: CanvasText; }
+
+  .toast__fechar { border: 1px solid ButtonText; }
+}
