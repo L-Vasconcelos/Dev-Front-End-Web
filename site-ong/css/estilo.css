@@ -120,6 +120,16 @@ a:focus {
   outline-offset: 2px;
 }
 
+/* Campo de data: o foco no botão do calendário fica no shadow DOM do navegador,
+   então o contorno é aplicado ao campo inteiro (WCAG 2.4.7) */
+input[type="date"]:focus-within {
+  outline: 3px solid var(--cor-primaria-700);
+  outline-offset: 2px;
+}
+
+/* Blocos de código roláveis recebem foco pelo teclado (WCAG 2.1.1) */
+.codigo:focus-visible { outline-color: var(--cor-secundaria-700); }
+
 img { max-width: 100%; height: auto; }
 
 /* Link de salto para o conteúdo (acessibilidade por teclado) */
