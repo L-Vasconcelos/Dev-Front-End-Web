@@ -45,7 +45,7 @@ Dev-Front-End-Web/
 |---|---|
 | Git | Para clonar o repositório |
 | Navegador atualizado | Chrome, Edge, Firefox ou Safari |
-| Node.js 18 ou superior (opcional) | Apenas para servir o site localmente com `npx serve` |
+| Node.js 18 ou superior | Para o build de produção (`npm run build`) e para servir o site localmente |
 
 ## Instalação e execução local
 
@@ -72,9 +72,25 @@ O endereço exibido no terminal (por padrão `http://localhost:3000`) abre o sit
 
 ## Build e testes
 
-O site roda sem etapa de build. A minificação de CSS e JavaScript e a compressão de imagens estão planejadas na issue #3 e serão documentadas nesta seção quando concluídas.
+O build de produção usa **esbuild** (CSS e JavaScript) e **html-minifier-terser** (HTML). Ele gera a pasta `dist/` com os arquivos minificados e os mesmos nomes da origem, então os HTML não precisam de alteração.
 
-Validação: os arquivos HTML e CSS são conferidos no [Nu Html Checker](https://validator.w3.org/nu/), mesmo motor do W3C. A acessibilidade será auditada com Lighthouse e axe (issue #2).
+```bash
+npm install          # instala as dependências de desenvolvimento
+npm run build        # gera dist/ e mostra a tabela de redução por arquivo
+npm run preview      # serve dist/ em http://localhost:3000
+npm run dev          # serve site-ong/ sem build, para desenvolvimento
+```
+
+| Arquivo | Antes | Depois | Redução |
+|---|---|---|---|
+| `css/estilo.css` | 38.1 kB | 25.4 kB | 33.4% |
+| `js/mascaras.js` | 10.8 kB | 4.4 kB | 59.1% |
+| `js/feedback.js` | 3.2 kB | 1.6 kB | 50.5% |
+| `js/menu.js` | 1.5 kB | 0.6 kB | 59.4% |
+| 4 páginas HTML | 53.7 kB | 41.3 kB | 23.0% |
+| **Total** | **107.4 kB** | **73.3 kB** | **31.7%** |
+
+Testes: os arquivos HTML e CSS são conferidos no [Nu Html Checker](https://validator.w3.org/nu/), mesmo motor do W3C. A acessibilidade foi auditada com axe-core e Playwright, com relatório em [`docs/auditoria-acessibilidade.md`](docs/auditoria-acessibilidade.md). Depois do build, o mesmo teste roda sobre `dist/` para confirmar que máscaras, menu, modal e toast funcionam igual à origem.
 
 ## Versionamento
 

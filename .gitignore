@@ -9,3 +9,7 @@ desktop.ini
 
 # Prints e rascunhos locais
 rascunhos/
+
+# Build e dependências
+node_modules/
+dist/
