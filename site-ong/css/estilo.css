@@ -247,11 +247,11 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ---------- 4.1 Menu responsivo: hambúrguer (celular) e dropdown (desktop) ----------
-   Mobile-first. Sem JavaScript o menu fica aberto; o JS adiciona .menu--pronto
+   Mobile-first. Sem JavaScript o menu fica aberto; um script inline no <head> adiciona .js ao <html>
    e só então o modo recolhido é ativado (aprimoramento progressivo). */
 
 /* Com o menu pronto, marca e botão ficam na mesma linha no celular */
-.cabecalho__interno:has(.menu--pronto) {
+.js .cabecalho__interno {
   flex-direction: row;
   align-items: center;
 }
@@ -272,7 +272,7 @@ img { max-width: 100%; height: auto; }
   cursor: pointer;
 }
 
-.menu--pronto .menu__botao { display: inline-flex; }
+.js .menu .menu__botao { display: inline-flex; }
 
 /* Ícone de três linhas feito com um span e dois pseudo-elementos */
 .menu__icone,
@@ -304,7 +304,7 @@ img { max-width: 100%; height: auto; }
 .menu__botao[aria-expanded="true"] .menu__icone::after { transform: translateY(-6px) rotate(-45deg); }
 
 /* Painel do celular: sai do fluxo e abre abaixo do cabeçalho */
-.menu--pronto .menu__lista {
+.js .menu .menu__lista {
   position: absolute;
   top: 100%;
   left: 0;
@@ -322,20 +322,20 @@ img { max-width: 100%; height: auto; }
   transition: max-height var(--transicao), opacity var(--transicao), visibility var(--transicao);
 }
 
-.menu--pronto .menu__botao[aria-expanded="true"] + .menu__lista {
+.js .menu .menu__botao[aria-expanded="true"] + .menu__lista {
   max-height: 32rem;
   overflow-y: auto;
   opacity: 1;
   visibility: visible;
 }
 
-.menu--pronto .menu__lista > li > a {
+.js .menu .menu__lista > li > a {
   display: inline-flex;           /* o sublinhado da página atual acompanha só o texto */
   align-items: center;
   min-height: var(--alvo-toque);
 }
 
-.menu--pronto .menu__lista > li > .menu__destaque {
+.js .menu .menu__lista > li > .menu__destaque {
   display: flex;                  /* o botão de destaque ocupa a largura do painel */
   justify-content: center;
   margin-top: var(--esp-3);
@@ -1064,8 +1064,8 @@ img { max-width: 100%; height: auto; }
   .cabecalho__interno { flex-direction: row; align-items: center; }
 
   /* Menu: o hambúrguer some e a lista volta a ser horizontal */
-  .menu--pronto .menu__botao { display: none; }
-  .menu--pronto .menu__lista {
+  .js .menu .menu__botao { display: none; }
+  .js .menu .menu__lista {
     position: static;
     flex-direction: row;
     align-items: center;
@@ -1079,8 +1079,8 @@ img { max-width: 100%; height: auto; }
     border: 0;
     box-shadow: none;
   }
-  .menu--pronto .menu__lista > li > a { min-height: 0; }
-  .menu--pronto .menu__lista > li > .menu__destaque { display: inline-flex; margin-top: 0; }
+  .js .menu .menu__lista > li > a { min-height: 0; }
+  .js .menu .menu__lista > li > .menu__destaque { display: inline-flex; margin-top: 0; }
 
   /* Dropdown: submenu escondido até :hover ou :focus-within no item pai */
   .menu__item--sub { position: relative; }
