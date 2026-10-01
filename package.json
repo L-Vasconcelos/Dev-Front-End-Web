@@ -1,6 +1,6 @@
 {
   "name": "instituto-semear",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "description": "Site institucional do Instituto Semear (Desenvolvimento Front-End para Web)",
   "type": "module",
@@ -12,6 +12,8 @@
   "devDependencies": {
     "esbuild": "0.25.12",
     "html-minifier-terser": "7.2.0",
-    "serve": "14.2.6"
+    "serve": "14.2.6",
+    "sharp": "0.34.5",
+    "svgo": "4.1.0"
   }
 }
