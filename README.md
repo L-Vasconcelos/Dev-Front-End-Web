@@ -72,7 +72,7 @@ O endereço exibido no terminal (por padrão `http://localhost:3000`) abre o sit
 
 ## Build e testes
 
-O build de produção usa **esbuild** (CSS e JavaScript) e **html-minifier-terser** (HTML). Ele gera a pasta `dist/` com os arquivos minificados e os mesmos nomes da origem, então os HTML não precisam de alteração.
+O build de produção usa **esbuild** (CSS e JavaScript), **html-minifier-terser** (HTML), **sharp** (WebP e PNG) e **SVGO** (SVG). Ele gera a pasta `dist/` com os arquivos minificados e os mesmos nomes da origem, então os HTML não precisam de alteração.
 
 ```bash
 npm install          # instala as dependências de desenvolvimento
@@ -87,8 +87,21 @@ npm run dev          # serve site-ong/ sem build, para desenvolvimento
 | `js/mascaras.js` | 10.8 kB | 4.4 kB | 59.1% |
 | `js/feedback.js` | 3.2 kB | 1.6 kB | 50.5% |
 | `js/menu.js` | 1.5 kB | 0.6 kB | 59.4% |
-| 4 páginas HTML | 53.7 kB | 41.3 kB | 23.0% |
-| **Total** | **107.4 kB** | **73.3 kB** | **31.7%** |
+| 4 páginas HTML | 54.0 kB | 42.8 kB | 20.7% |
+| 6 SVG | 6.8 kB | 5.1 kB | 24.3% |
+| 12 WebP e PNG (2x) | 266.3 kB | 77.9 kB | 70.8% |
+
+Imagens: o `<picture>` serve primeiro o SVG, que passa pelo **SVGO**. Os fallbacks WebP e PNG são redimensionados pelo **sharp** para 1x e 2x da largura real de exibição (600/1200 px nos projetos, 800/1600 px na foto institucional), recomprimidos (WebP qualidade 80, PNG com paleta) e recebem `srcset` e `sizes` no build. Imagens com `loading="lazy"` ganham `decoding="async"`.
+
+### Desempenho (Lighthouse 12, simulação mobile)
+
+| Página | Antes | Depois | CLS antes → depois | Peso antes → depois |
+|---|---|---|---|---|
+| `index.html` | 84 | 100 | 0.335 → 0 | 51 → 35 KiB |
+| `projetos.html` | 83 | 100 | 0.335 → 0 | 60 → 43 KiB |
+| `cadastro.html` | 83 | 100 | 0.335 → 0 | 71 → 46 KiB |
+
+O CLS vinha do menu: ele era recolhido só quando o `menu.js` rodava, no fim da página, empurrando o conteúdo depois da primeira pintura. Um script inline no `<head>` agora marca `<html class="js">` antes da renderização, e o CSS usa `.js .menu` no lugar de `.menu--pronto`. Sem JavaScript, o menu continua aberto.
 
 Testes: os arquivos HTML e CSS são conferidos no [Nu Html Checker](https://validator.w3.org/nu/), mesmo motor do W3C. A acessibilidade foi auditada com axe-core e Playwright, com relatório em [`docs/auditoria-acessibilidade.md`](docs/auditoria-acessibilidade.md). Depois do build, o mesmo teste roda sobre `dist/` para confirmar que máscaras, menu, modal e toast funcionam igual à origem.
 
