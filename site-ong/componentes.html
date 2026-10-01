@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guia de componentes de feedback do Instituto Semear: badges, alertas, toasts e modal, com classes e estados prontos para reuso.">
+  <meta name="author" content="Luis Fellipe Vasconcelos Magalhaes da Silva">
+  <title>Guia de componentes | Instituto Semear</title>
+  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="cabecalho">
+    <div class="container cabecalho__interno">
+      <p class="marca">
+        <img class="marca__logo" src="img/logo-semear.svg" alt="" width="40" height="40">
+        Instituto Semear
+      </p>
+
+      <nav class="menu" aria-label="Navegação principal">
+        <button class="menu__botao" type="button" aria-expanded="false" aria-controls="menu-principal">
+          <span class="menu__icone" aria-hidden="true"></span>
+          Menu
+        </button>
+        <ul class="menu__lista" id="menu-principal">
+          <li><a href="index.html">Início</a></li>
+          <li class="menu__item--sub">
+            <a href="projetos.html">Projetos sociais</a>
+            <ul class="submenu" aria-label="Seções de Projetos sociais">
+              <li><a href="projetos.html#projeto-semear-saber">Semear Saber</a></li>
+              <li><a href="projetos.html#projeto-mesa-cheia">Mesa Cheia</a></li>
+              <li><a href="projetos.html#projeto-maos-que-criam">Mãos que Criam</a></li>
+              <li><a href="projetos.html#projeto-raiz-cultural">Raiz Cultural</a></li>
+              <li><a href="projetos.html#como-contribuir">Como contribuir</a></li>
+            </ul>
+          </li>
+          <li><a href="cadastro.html" class="menu__destaque">Seja voluntário</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ CONTEÚDO PRINCIPAL ============ -->
+  <main id="conteudo-principal">
+
+    <section class="hero hero--curto" aria-labelledby="titulo-principal">
+      <div class="container">
+        <h1 id="titulo-principal">Guia de componentes</h1>
+        <p class="hero__texto">
+          Referência dos componentes de feedback do site. Cada componente usa apenas os tokens
+          do design system e é ativado por classes e atributos, sem depender de estilos da página.
+        </p>
+      </div>
+    </section>
+
+    <!-- BADGES -->
+    <section class="secao" aria-labelledby="titulo-badges">
+      <div class="container">
+        <h2 id="titulo-badges">Badges</h2>
+        <p>Etiquetas curtas para categorizar informação. Usadas na página de projetos para a frente de atuação e as vagas.</p>
+        <ul class="badges" aria-label="Variantes de badge">
+          <li class="badge">Padrão</li>
+          <li class="badge badge--primaria">Educação</li>
+          <li class="badge badge--secundaria">25 vagas para voluntários</li>
+          <li class="badge badge--sucesso">Inscrição confirmada</li>
+          <li class="badge badge--erro">Vagas esgotadas</li>
+        </ul>
+        <pre class="codigo" tabindex="0" role="region" aria-label="Exemplo de código: badge"><code>&lt;li class="badge badge--primaria"&gt;Educação&lt;/li&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- ALERTAS -->
+    <section class="secao secao--alt" aria-labelledby="titulo-alertas">
+      <div class="container container--estreito">
+        <h2 id="titulo-alertas">Alertas</h2>
+        <p>Mensagens fixas no fluxo da página. Cor, ícone e título indicam o tipo, para que o estado não dependa só da cor.</p>
+        <div class="alerta alerta--info" role="note">
+          <p class="alerta__titulo">Informação</p>
+          <p>Os campos marcados com * são obrigatórios.</p>
+        </div>
+        <div class="alerta alerta--sucesso" role="note">
+          <p class="alerta__titulo">Sucesso</p>
+          <p>Cadastro enviado. Entraremos em contato pelo e-mail informado.</p>
+        </div>
+        <div class="alerta alerta--aviso" role="note">
+          <p class="alerta__titulo">Atenção</p>
+          <p>É necessário ter 18 anos ou mais para atuar como voluntário.</p>
+        </div>
+        <div class="alerta alerta--erro" role="note">
+          <p class="alerta__titulo">Erro</p>
+          <p>Existem campos com problemas. Revise os itens destacados.</p>
+        </div>
+        <pre class="codigo" tabindex="0" role="region" aria-label="Exemplo de código: alerta"><code>&lt;div class="alerta alerta--aviso" role="note"&gt;
+  &lt;p class="alerta__titulo"&gt;Atenção&lt;/p&gt;
+  &lt;p&gt;Mensagem&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+    </section>
+
+    <!-- TOAST E MODAL -->
+    <section class="secao" aria-labelledby="titulo-toast">
+      <div class="container container--estreito">
+        <h2 id="titulo-toast">Toast e modal</h2>
+        <p>
+          O toast é uma notificação não obstrutiva: aparece no canto da tela, é anunciado por leitores
+          de tela e some sozinho após 6 segundos. O modal interrompe o fluxo e pede uma decisão; usa o
+          elemento nativo <code>dialog</code>, que prende o foco e fecha com Esc.
+        </p>
+        <div class="acoes">
+          <button type="button" class="botao" data-toast="Alterações salvas com sucesso." data-toast-tipo="sucesso">Mostrar toast de sucesso</button>
+          <button type="button" class="botao botao--secundario" data-toast="Não foi possível enviar. Tente novamente." data-toast-tipo="erro">Mostrar toast de erro</button>
+          <button type="button" class="botao botao--secundario" data-modal-abrir="modal-exemplo">Abrir modal</button>
+        </div>
+        <pre class="codigo" tabindex="0" role="region" aria-label="Exemplo de código: toast"><code>&lt;button data-toast="Mensagem" data-toast-tipo="sucesso"&gt;
+&lt;button data-modal-abrir="id-do-dialog"&gt;
+SemearFeedback.toast("Mensagem", "erro");</code></pre>
+      </div>
+    </section>
+
+  </main>
+
+  <dialog class="modal" id="modal-exemplo" aria-labelledby="modal-exemplo-titulo" aria-describedby="modal-exemplo-texto" data-toast-confirmar="Ação confirmada.">
+    <h2 id="modal-exemplo-titulo" class="modal__titulo">Confirmar ação?</h2>
+    <p id="modal-exemplo-texto">Exemplo de modal de confirmação. Cancelar ou Esc fecham sem efeito; confirmar exibe um toast.</p>
+    <div class="modal__acoes">
+      <button type="button" class="botao botao--secundario" data-acao="cancelar">Cancelar</button>
+      <button type="button" class="botao" data-acao="confirmar">Confirmar</button>
+    </div>
+  </dialog>
+
+  <div class="toast-area" role="status" aria-live="polite"></div>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="rodape">
+    <div class="container rodape__interno">
+
+      <section aria-labelledby="titulo-contato">
+        <h2 id="titulo-contato" class="rodape__titulo">Contato</h2>
+        <address class="rodape__endereco">
+          Instituto Semear<br>
+          Rua das Acácias, 128 — Centro<br>
+          Recife — PE, 50010-000<br>
+          Telefone: <a href="tel:+558133334444">(81) 3333-4444</a><br>
+          E-mail: <a href="mailto:contato@institutosemear.org.br">contato@institutosemear.org.br</a>
+        </address>
+      </section>
+
+      <section aria-labelledby="titulo-mapa-site">
+        <h2 id="titulo-mapa-site" class="rodape__titulo">Mapa do site</h2>
+        <nav aria-label="Navegação do rodapé">
+          <ul class="rodape__lista">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="projetos.html">Projetos sociais</a></li>
+            <li><a href="cadastro.html">Cadastro de voluntários</a></li>
+            <li><a href="componentes.html">Guia de componentes</a></li>
+          </ul>
+        </nav>
+      </section>
+
+      <section aria-labelledby="titulo-transparencia">
+        <h2 id="titulo-transparencia" class="rodape__titulo">Transparência</h2>
+        <p class="rodape__texto">
+          CNPJ 00.000.000/0001-00<br>
+          Relatórios anuais e demonstrações financeiras disponíveis mediante solicitação.
+        </p>
+      </section>
+
+    </div>
+
+    <p class="rodape__copyright">
+      <small>&copy; 2026 Instituto Semear. Conteúdo fictício produzido para fins acadêmicos.</small>
+    </p>
+  </footer>
+
+  <script src="js/feedback.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>

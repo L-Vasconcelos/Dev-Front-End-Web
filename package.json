@@ -1,0 +1,19 @@
+{
+  "name": "instituto-semear",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional do Instituto Semear (Desenvolvimento Front-End para Web)",
+  "type": "module",
+  "scripts": {
+    "dev": "serve site-ong",
+    "build": "node scripts/build.mjs",
+    "preview": "serve dist"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "html-minifier-terser": "7.2.0",
+    "serve": "14.2.6",
+    "sharp": "0.34.5",
+    "svgo": "4.1.0"
+  }
+}

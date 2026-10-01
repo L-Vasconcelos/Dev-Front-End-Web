@@ -6,6 +6,7 @@
   <meta name="description" content="Instituto Semear - ONG que promove educação, segurança alimentar e geração de renda em comunidades de baixa renda.">
   <meta name="author" content="Luis Fellipe Vasconcelos Magalhaes da Silva">
   <title>Instituto Semear | ONG de educação e desenvolvimento comunitário</title>
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="stylesheet" href="css/estilo.css">
 </head>
 <body>
@@ -21,9 +22,22 @@
       </p>
 
       <nav class="menu" aria-label="Navegação principal">
-        <ul class="menu__lista">
+        <button class="menu__botao" type="button" aria-expanded="false" aria-controls="menu-principal">
+          <span class="menu__icone" aria-hidden="true"></span>
+          Menu
+        </button>
+        <ul class="menu__lista" id="menu-principal">
           <li><a href="index.html" aria-current="page">Início</a></li>
-          <li><a href="projetos.html">Projetos sociais</a></li>
+          <li class="menu__item--sub">
+            <a href="projetos.html">Projetos sociais</a>
+            <ul class="submenu" aria-label="Seções de Projetos sociais">
+              <li><a href="projetos.html#projeto-semear-saber">Semear Saber</a></li>
+              <li><a href="projetos.html#projeto-mesa-cheia">Mesa Cheia</a></li>
+              <li><a href="projetos.html#projeto-maos-que-criam">Mãos que Criam</a></li>
+              <li><a href="projetos.html#projeto-raiz-cultural">Raiz Cultural</a></li>
+              <li><a href="projetos.html#como-contribuir">Como contribuir</a></li>
+            </ul>
+          </li>
           <li><a href="cadastro.html" class="menu__destaque">Seja voluntário</a></li>
         </ul>
       </nav>
@@ -208,6 +222,7 @@
             <li><a href="index.html">Início</a></li>
             <li><a href="projetos.html">Projetos sociais</a></li>
             <li><a href="cadastro.html">Cadastro de voluntários</a></li>
+            <li><a href="componentes.html">Guia de componentes</a></li>
           </ul>
         </nav>
       </section>
@@ -227,5 +242,6 @@
     </p>
   </footer>
 
+  <script src="js/menu.js"></script>
 </body>
 </html>

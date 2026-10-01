@@ -225,6 +225,35 @@
      Envio
      --------------------------------------------------------------------- */
 
+  /* ---------------------------------------------------------------------
+     Limpar formulário: confirmação em modal e aviso em toast
+     --------------------------------------------------------------------- */
+
+  var modalLimpar = document.getElementById('modal-limpar');
+  var limparDireto = false;   // true quando o próprio script limpa (após envio)
+
+  function limparTudo() {
+    limparDireto = true;
+    form.reset();
+    limparDireto = false;
+    if (contador) contador.textContent = '0 / 500 caracteres';
+  }
+
+  form.addEventListener('reset', function (evento) {
+    if (limparDireto || !window.SemearFeedback) return;
+    if (window.SemearFeedback.abrirModal(modalLimpar)) evento.preventDefault();
+  });
+
+  if (modalLimpar) {
+    modalLimpar.addEventListener('close', function () {
+      if (modalLimpar.returnValue !== 'confirmar') return;
+      limparTudo();
+      if (retorno) retorno.hidden = true;
+      document.getElementById('nome').focus();
+      window.SemearFeedback.toast('Formulário limpo. Você pode preencher de novo.', 'sucesso');
+    });
+  }
+
   form.addEventListener('submit', function (evento) {
     evento.preventDefault();
 
@@ -241,12 +270,25 @@
     }
 
     var nome = document.getElementById('nome').value.trim().split(' ')[0];
-    mostrarRetorno(
-      'Cadastro enviado com sucesso. Obrigado, ' + nome + '! Entraremos em contato pelo e-mail informado.',
-      'sucesso'
-    );
-    form.reset();
-    if (contador) contador.textContent = '0 / 500 caracteres';
+    var botaoEnviar = form.querySelector('button[type="submit"]');
+    var textoOriginal = botaoEnviar.textContent;
+
+    // Estado disabled durante o envio: evita clique duplo e informa que algo está acontecendo
+    botaoEnviar.disabled = true;
+    botaoEnviar.textContent = 'Enviando...';
+    form.setAttribute('aria-busy', 'true');
+
+    // Simulação do tempo de resposta de um servidor (o projeto é só front-end)
+    setTimeout(function () {
+      mostrarRetorno(
+        'Cadastro enviado com sucesso. Obrigado, ' + nome + '! Entraremos em contato pelo e-mail informado.',
+        'sucesso'
+      );
+      limparTudo();
+      botaoEnviar.disabled = false;
+      botaoEnviar.textContent = textoOriginal;
+      form.removeAttribute('aria-busy');
+    }, 1200);
   });
 
   function mostrarRetorno(mensagem, tipo) {
